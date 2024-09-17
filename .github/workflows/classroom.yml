@@ -1,7 +1,5 @@
 name: Autograding Tests
-'on':
-- push
-- repository_dispatch
+'on': {}
 permissions:
   checks: write
   actions: read
@@ -13,13 +11,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: dfdff
-      id: dfdff
+    - name: Hello
+      id: hello
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: dfdff
+        test-name: Hello
         setup-command: ''
-        command: python3.main.py
+        command: python3main.py
         input: ''
         expected-output: ''
         comparison-method: contains
@@ -27,6 +25,6 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        DFDFF_RESULTS: "${{steps.dfdff.outputs.result}}"
+        HELLO_RESULTS: "${{steps.hello.outputs.result}}"
       with:
-        runners: dfdff
+        runners: hello
